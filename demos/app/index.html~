@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>E-Busker</title>
+  <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>    
+	<link rel="stylesheet" href="jquery/jquery.mobile-1.0.1.css" /> 
+	<script src="jquery/jquery-1.7.1.min.js"></script> 
+	<script src="jquery/jquery.mobile-1.0.1.js"></script>
+  
+<script type="text/javascript">
+$( function() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+});
+
+function onDeviceReady() {
+	App.init();
+}
+</script>  
+
+	<link rel="stylesheet" href="css/ebusker.css" /> 
+	<script src="js/ebusker.js"></script>
+
+</head>
+<body>
+
+<div data-role="page" data-theme="a" id="home">
+
+	<div data-role="header" data-position="fixed">
+		<h1>E-Busker</h1>
+	</div>
+
+	<div data-role="content" data-position="inline">
+
+		<table id="now_playing">
+		<tr>
+			<td class="label">Show:</td>
+			<td id="now_playing_show_name">Loading</td>
+		</tr>
+		<tr>
+			<td class="label">Artist:</td>
+			<td id="now_playing_artist_name">Loading</td>
+		</tr>
+		<tr>
+			<td class="label">Title:</td>
+			<td id="now_playing_track_name">Loading</td>
+		</tr>
+		<tr>
+			<td class="label">Time:</td>
+			<td id="now_playing_track_countdown">...</td>
+		</tr>
+		</table>
+
+		<div id="now_playing_ebusk">
+
+			<a href="javascript: App.Transaction.init();" data-role="button">Send Money to Artist</a>
+
+		</div>
+
+	</div>
+
+	<!--
+	<div data-role="footer" class="ui-bar" data-position="fixed">
+		<a href="#settings" data-role="button" data-icon="gear">Settings</a>
+	</div>
+	-->
+
+
+</div>
+
+<div data-role="page" data-theme="a" id="settings">
+
+	<div data-role="header" data-position="fixed">
+		<h1>E-Busker Settings</h1>
+	</div>
+
+	<div data-role="content">
+
+		<div data-role="fieldcontain" class="ui-hide-label">
+			<label for="settings-username" class="ui-hidden-accessible">Username:</label>
+			<input type="text" name="username" id="settings-username" value="" placeholder="Username"/>
+		</div>
+
+		<div data-role="fieldcontain" class="ui-hide-label">
+			<label for="settings-password" class="ui-hidden-accessible">Password:</label>
+			<input type="password" name="username" id="settings-password" value="" placeholder="Password"/>
+		</div>
+
+		<div data-role="controlgroup" data-type="horizontal">
+			<a href="javascript: App.Settings.save();" data-role="button">Apply</a>
+			<a data-rel="back" data-role="button">Cancel</a>
+		</div>
+
+	</div>
+	
+</div>
+
+<div data-role="page" data-theme="a" id="transaction">
+
+	<div data-role="header" data-position="fixed">
+		<h1>E-Busker Transaction</h1>
+	</div>
+
+	<div id="transaction_content" data-role="content">
+
+		<div>Sending money to <span id="transaction_artist"></span>.</div>
+
+		<div data-role="controlgroup" data-type="horizontal">
+			<a href="javascript: App.Transaction.increaseAmount(0.01);" data-role="button">1</a>
+			<a href="javascript: App.Transaction.increaseAmount(0.05);" data-role="button">5</a>
+			<a href="javascript: App.Transaction.increaseAmount(0.10);" data-role="button">10</a>
+			<a href="javascript: App.Transaction.increaseAmount(0.25);" data-role="button">25</a>
+		</div>
+		<a href="javascript: App.Transaction.resetAmount();" data-role="button">Reset</a>
+
+		<div>Transaction Total: $<span id="transaction_total">0.00</span>. $2 limit.</div>
+
+		<div>
+			<div>Comments to Artist:</div>
+			<textarea cols="40" rows="2" id="transaction_comments"></textarea>
+		</div>
+
+		<div>
+			<a href="javascript: App.Transaction.send();" data-role="button">Send Money to Artist</a>
+		</div>
+
+	</div>
+	
+</div>
+
+</body>
+</html>

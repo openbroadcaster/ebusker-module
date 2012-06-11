@@ -1,0 +1,38 @@
+#now_playing
+{
+	margin: 0 auto;
+}
+
+#now_playing td
+{
+	font-size: 20px;
+	padding: 5px 2px;
+}
+
+#now_playing td:first-child
+{
+	font-weight: bold;
+	text-align: right;
+}
+
+#now_playing_ebusk
+{
+	display: none;
+	margin-top: 3em;
+}
+
+#transaction_content
+{
+	text-align: center;
+}
+
+#transaction_content > div
+{
+	margin-top: 2em;
+}
+
+#transaction_content > div:first-child
+{
+	margin-top: 0em;
+}
+
